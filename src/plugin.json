@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "panel",
+  "name": "Demo Plugin",
+  "state": "alpha",
+  "id": "demoorg-demoplugin-panel",
+  "info": {
+    "keywords": ["panel"],
+    "description": "Demo about create a panel plugin",
+    "author": {
+      "name": "Demo org"
+    },
+    "logos": {
+      "small": "img/logo-plugin.svg",
+      "large": "img/logo-plugin.svg"
+    },
+    "links": [
+      {
+        "name": "Test-link",
+        "url": "https://github.com/thanhthu2/build-a-panel-plugin"
+      },
+      {
+        "name": "Test-link-1",
+        "url": "https://github.com/thanhthu2/build-a-panel-plugin"
+      }
+    ],
+    "screenshots": [],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=9.5.3",
+    "plugins": []
+  }
+}

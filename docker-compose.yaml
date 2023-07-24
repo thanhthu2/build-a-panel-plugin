@@ -1,0 +1,32 @@
+version: '3.0'
+
+services:
+  grafana:
+    container_name: 'demoorg-demoplugin-panel'
+    build:
+      context: ./.config
+      args:
+        grafana_image: ${GRAFANA_IMAGE:-grafana-enterprise}
+        grafana_version: ${GRAFANA_VERSION:-10.0.2}
+    ports:
+      - 3000:3000/tcp
+    volumes:
+      - ./dist:/var/lib/grafana/plugins/demoorg-demoplugin-panel
+      - ./provisioning:/etc/grafana/provisioning
+      - ./custom.ini:/etc/grafana/grafana.ini
+      # Replace Favicon
+      - ./img/fav32.png:/usr/share/grafana/public/img/fav32.png
+      # Replace logo
+      - ./img/logo.svg:/usr/share/grafana/public/img/grafana_icon.svg
+      # Replace Background
+      - ./img/background.svg:/usr/share/grafana/public/img/g8_login_dark.svg
+      - ./img/background.svg:/usr/share/grafana/public/img/g8_login_light.svg
+
+  renderer:
+    image: grafana/grafana-image-renderer:latest
+    ports:
+      - 8081
+    environment:
+      ENABLE_METRICS: 'true' 
+volumes:
+  grafana_storage: {}
